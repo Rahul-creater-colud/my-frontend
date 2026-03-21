@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --muted: #9ca3af;
+  --accent: #22c55e;
+}
+
+body {
+  background: linear-gradient(135deg, #0b1224, #0f172a);
+  color: #e5e7eb;
+  min-height: 100vh;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
