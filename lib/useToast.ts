@@ -1,5 +1,4 @@
 'use client';
-
 import { useState, useCallback } from 'react';
 
 export const useToast = () => {
@@ -9,7 +8,7 @@ export const useToast = () => {
   const show = useCallback((msg: string, t: 'success' | 'error' = 'success') => {
     setMessage(msg);
     setType(t);
-    setTimeout(() => setMessage(null), 2500);
+    setTimeout(() => setMessage(null), 3000);
   }, []);
 
   return { message, type, show };

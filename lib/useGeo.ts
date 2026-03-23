@@ -1,26 +1,18 @@
 'use client';
-
 import { useEffect, useState } from 'react';
 
 export const useGeo = () => {
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      setError('Geolocation not supported');
-      return;
-    }
-
+    if (!navigator.geolocation) { setError('Geolocation not supported'); setLoading(false); return; }
     navigator.geolocation.getCurrentPosition(
-      (pos) =>
-        setCoords({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        }),
-      (err) => setError(err.message)
+      (pos) => { setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setLoading(false); },
+      (err) => { setError(err.message); setLoading(false); }
     );
   }, []);
 
-  return { coords, error };
+  return { coords, error, loading };
 };
